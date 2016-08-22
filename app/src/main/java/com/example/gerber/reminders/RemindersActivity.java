@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/**
+ * Created by Sel on 2016/8/21.
+ */
 public class RemindersActivity extends AppCompatActivity {
     private ListView mListView;
 
