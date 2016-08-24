@@ -1,5 +1,6 @@
 package com.example.gerber.reminders;
 
+import android.database.Cursor;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.widget.ListView;
  */
 public class RemindersActivity extends AppCompatActivity {
     private ListView mListView;
+    private ReminderDbAdapter mDbAdapter;
+    private RemindersSimpleCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,16 @@ public class RemindersActivity extends AppCompatActivity {
 //         toolbar.setSubtitle("Sub title");
         setSupportActionBar(toolbar);
         mListView = (ListView) findViewById(R.id.reminders_list_view);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.reminders_row, R.id.row_text, new String[]{"first record", "second record", "third record"});
-        mListView.setAdapter(arrayAdapter);
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.reminders_row, R.id.row_text, new String[]{"first record", "second record", "third record"});
+//        mListView.setAdapter(arrayAdapter);
+        mListView.setDivider(null);
+        mDbAdapter = new ReminderDbAdapter(this);
+        mDbAdapter.open();
+        Cursor cursor = mDbAdapter.fetchAllReminders();
+        String[] from = new String[]{ReminderDbAdapter.COL_CONTENT};
+        int[] to = new int[]{R.id.row_text};
+        mCursorAdapter = new RemindersSimpleCursorAdapter(this, R.layout.reminders_row, cursor, from, to, 0);
+        mListView.setAdapter(mCursorAdapter);
     }
 
     @Override

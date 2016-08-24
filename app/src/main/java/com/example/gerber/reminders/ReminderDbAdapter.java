@@ -17,9 +17,9 @@ public class ReminderDbAdapter {
     public static final int INDEX_CONTENT = INDEX_ID + 1;
     public static final int INDEX_IMPORTANT = INDEX_ID + 2;
     //these are the column names
-    private static final String COL_ID = "_id";
-    private static final String COL_CONTENT = "content";
-    private static final String COL_IMPORTANT = "important";
+    public static final String COL_ID = "_id";
+    public static final String COL_CONTENT = "content";
+    public static final String COL_IMPORTANT = "important";
     //used for logging
     private static final String TAG = "ReminderDbAdpater";
     private static final String DATABASE_NAME = "dba_remdrs";
