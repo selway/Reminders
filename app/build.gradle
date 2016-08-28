@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "com.example.gerber.reminders"
+        applicationId "com.example.selway.reminders"
         minSdkVersion 8
         targetSdkVersion 24
         versionCode 1

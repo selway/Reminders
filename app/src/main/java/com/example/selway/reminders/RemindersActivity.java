@@ -1,4 +1,4 @@
-package com.example.gerber.reminders;
+package com.example.selway.reminders;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
@@ -8,10 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,9 +24,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.nio.BufferUnderflowException;
 
 /**
  * Created by Sel on 2016/8/21.

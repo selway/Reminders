@@ -1,4 +1,4 @@
-package com.example.gerber.reminders;
+package com.example.selway.reminders;
 
 /**
  * Created by Sel on 2016/8/22.

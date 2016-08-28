@@ -1,4 +1,4 @@
-package com.example.gerber.reminders;
+package com.example.selway.reminders;
 
 import org.junit.Test;
 
