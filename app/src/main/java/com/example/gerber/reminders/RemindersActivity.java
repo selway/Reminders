@@ -45,9 +45,10 @@ public class RemindersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reminders);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //设置图标
-//       toolbar.setLogo(R.drawable.ic_launcher);
+//       toolbar.setLogo(R.mipmap.ic_launcher);
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
         //标题
-//        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(R.string.app_name);
         //副标题
 //         toolbar.setSubtitle("Sub title");
         setSupportActionBar(toolbar);
@@ -181,7 +182,7 @@ public class RemindersActivity extends AppCompatActivity {
         LinearLayout rootLayout = (LinearLayout) dialog.findViewById(R.id.custom_root_layout);
         final boolean isEditOperation = (reminder != null);
         if (isEditOperation) {
-            titleView.setText("Edit Reminder");
+            titleView.setText(R.string.reminder_edit);
             checkBox.setChecked(reminder.getiImportant() == 1);
             editCustom.setText(reminder.getContent());
             rootLayout.setBackgroundColor(ActivityCompat.getColor(this, R.color.blue));
