@@ -4,4 +4,7 @@
     <string name="exit">exit</string>
     <string name="delete">delete</string>
     <string name="reminder_text">Reminder Text</string>
+    <string name="important">Important</string>
+    <string name="cancel">Cancel</string>
+    <string name="commit">Commit</string>
 </resources>
