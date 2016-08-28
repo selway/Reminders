@@ -2,8 +2,11 @@ package com.example.selway.reminders;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,11 +27,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Sel on 2016/8/21.
  */
 public class RemindersActivity extends AppCompatActivity {
+    private static final String SHARE_APP_TAG = "ReminderShare";
     private ListView mListView;
     private ReminderDbAdapter mDbAdapter;
     private RemindersSimpleCursorAdapter mCursorAdapter;
@@ -52,10 +57,17 @@ public class RemindersActivity extends AppCompatActivity {
         mListView.setDivider(null);
         mDbAdapter = new ReminderDbAdapter(this);
         mDbAdapter.open();
-        if (savedInstanceState == null) {
+        SharedPreferences setting = getSharedPreferences(SHARE_APP_TAG, 0);
+        Boolean user_first = setting.getBoolean("IS_FIRST_RUN", true);
+        if (user_first) {//第一次
+            setting.edit().putBoolean("IS_FIRST_RUN", false).commit();
             mDbAdapter.deleteAllReminder();
             insertSomeReminders();
         }
+//        if (savedInstanceState == null) {
+//            mDbAdapter.deleteAllReminder();
+//            insertSomeReminders();
+//        }
         Cursor cursor = mDbAdapter.fetchAllReminders();
         String[] from = new String[]{ReminderDbAdapter.COL_CONTENT};
         int[] to = new int[]{R.id.row_text};
@@ -225,6 +237,11 @@ public class RemindersActivity extends AppCompatActivity {
             default:
                 return false;
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     private class OnItemClickListener implements android.widget.AdapterView.OnItemClickListener {
